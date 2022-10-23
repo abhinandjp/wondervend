@@ -1,0 +1,143 @@
+
+<%- include('../layouts/header.ejs') %> 
+<%-include('../partials/admin-navbar.ejs') %> 
+
+<section>
+    <div class="container">
+        <!-- <div class="row mt-4">
+            <a href="" class="btn btn-success">Add Product</a>
+        </div> -->
+
+          
+          <!-- <input type="text" class="mt-5 ml-auto" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."> -->
+          
+<div class="container">
+  <div class="btn-group pt-5 contact">
+    <a class="btn btn-primary dropdown-toggle mb-2" data-bs-toggle="dropdown" aria-expanded="false">
+        Download
+    </a>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="/admin/exportExcel">Excel</a></li>
+        <li><button class="dropdown-item" onclick="myfun('pt')">Pdf</button></li>
+  
+    </ul>
+  </div>
+
+            <div class="table-wrap" id="pt">
+              <table id="usertable" class="table mt-5">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Order Id</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">Image</th>      
+      <th scope="col">Order Status</th>
+      <!-- <th>Image</th> -->
+      <th scope="col">Accept / Cancel</th>
+     
+      
+      
+    </tr>
+  </thead>
+  <% for(let i =0; i< result.items.length; i++) {%> 
+  <tbody>
+    <tr>
+        <th scope="row"> <%=i+1  %> </th>
+        <td><%= result.items[i].itemId%> </td>
+        <td><%= result.items[i].productName%> </td>
+        <td><%= result.items[i].quantity%> </td>
+        <td><%= result.items[i].price%> </td>
+        <td> <img src="/images/<%= result.items[i].image1 %> " style="height: 75px;" alt=""> </td>
+        <td><%= result.items[i].orderStatus%> </td>
+      
+        <td>
+          <% if(result.items[i].orderStatus==="processed"){ %> 
+          <form action="/admin-orders/order-accept?id=<%= result.items[i].itemId  %>&orderId=<%= result._id  %> " method="post">
+            <button class="btn btn-success" >Accept</button>
+          </form>
+          <form action="/admin-orders/order-cancel?id=<%= result.items[i].itemId %>&orderId=<%= result._id %>  " method="post">
+            <button class="btn btn-danger" >Cancel</button>
+          </form>
+          <% }else if(result.items[i].orderStatus==='Processed'){ %> 
+            <form action="/admin-orders/order-processed?id=<%= result.items[i].itemId  %>&orderId=<%= result._id  %> " method="post">
+                <button class="btn btn-warning" >Shipped</button>
+            </form>
+            <% }else if(result.items[i].orderStatus==='Shipped') {%> 
+              <form action="/admin-orders/order-shipped?id=<%= result.items[i].itemId  %>&orderId=<%= result._id  %> " method="post">
+                  <button class="btn btn-info" >Delivered</button>
+              </form>
+              <% }else if(result.items[i].orderStatus==='Delivered'){ %> 
+                
+                <i class="fa fa-check" style="font-size:48px;color:green"></i>
+                <% }else if(result.items[i].orderStatus==='Cancel'){ %> 
+                  <i class="fa fa-ban " style="font-size:48px;color:red ;" aria-hidden="true"></i>
+                  <% } %> 
+              
+         
+           
+      </td>
+          
+    </tr>
+     
+  </tbody>
+  <% } %> 
+</table>
+
+</div>
+
+    </div>
+</section>
+
+
+<!-- <script>
+  $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script> -->
+<!-- 
+<script>
+  console.log("script working")
+  function myfun(pt) {
+      var bk = document.body.innerHTML;
+      var dv = document.getElementById('pt').innerHTML;
+      document.body.innerHTML = dv;
+      document.body.style.padding = "20px"
+      window.print();
+      location.reload();
+  }
+  $(document).ready(function () {
+      $('#myTable').DataTable()
+  });
+</script> -->
+
+<script>
+  console.log("script working")
+  function myfun(pt) {
+      var bk = document.body.innerHTML;
+      var dv = document.getElementById('pt').innerHTML;
+      document.body.innerHTML = dv;
+      document.body.style.padding = "20px"
+      window.print();
+      location.reload();
+  }
+  $(document).ready(function () {
+      $('#usertable').DataTable()
+  });
+</script>
+
+<%- include ('../layouts/footer.ejs') %> 
+
+
+
+
+
+
+
+
+
+
+
+<%- include('../layouts/footer.ejs') %>

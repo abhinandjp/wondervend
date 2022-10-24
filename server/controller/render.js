@@ -810,7 +810,7 @@ exports.razorpay = (req, res) => {
                 };
 
                 razorpay.orders.create(options, function (err, order) {
-                        console.log(order);
+                       
                         res.json({ razorpay: true, order });
                 });
         })

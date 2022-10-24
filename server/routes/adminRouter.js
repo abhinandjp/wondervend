@@ -25,31 +25,31 @@ router.get('/admin_products',services.adminLoggedIn,services.adminProducts)
 router.get('/admin_panel/add-products',services.adminLoggedIn,services.addProducts)
 router.post('/admin_panel/add-product',store.any(),services.addProduct)
 router.post('/admin_panel/add-product/update',store.any(),services.updateProduct)
-router.get('/admin_panel/edit-product',services.editProduct)
-router.get('/admin_panel/delete-product',services.deleteProduct)
+router.get('/admin_panel/edit-product', services.adminLoggedIn,services.editProduct)
+router.get('/admin_panel/delete-product', services.adminLoggedIn,services.deleteProduct)
 
 
-router.get('/admin-orders',services.adminOrder)
-router.get('/admin-orders/viewOrder',services.viewOrder)
+router.get('/admin-orders', services.adminLoggedIn,services.adminOrder)
+router.get('/admin-orders/viewOrder', services.adminLoggedIn,services.viewOrder)
 router.post('/admin-orders/order-accept',services.orderAccept)
 router.post('/admin-orders/order-processed',services.orderProcessed)
 router.post('/admin-orders/order-shipped',services.orderShipped)
 router.post('/admin-orders/order-cancel',services.orderCancel)
 
-router.get('/admin-category',services.adminCategory)
+router.get('/admin-category', services.adminLoggedIn,services.adminCategory)
 router.post('/admin-category',services.addCategory)
-router.get('/admin-category/delete',services.deleteCategory)
+router.get('/admin-category/delete', services.adminLoggedIn,services.deleteCategory)
 
 
 
 
-router.get('/admin-coupon',services.adminCoupon)
+router.get('/admin-coupon', services.adminLoggedIn,services.adminCoupon)
 router.post('/admin-coupon/add-coupon',services.addCoupon)
 router.post('/admin-coupon/delete-coupon',services.deleteCoupon)
 
 
 router.post('/test',services.test)
-router.get('/admin/exportExcel',services.exportExcel)
+router.get('/admin/exportExcel', services.adminLoggedIn,services.exportExcel)
 
 
 

@@ -27,13 +27,11 @@
                                 <div class="price d-flex flex-row align-items-center"><span class="act-price font-i"><h1>₹ <%= result.discountedPrice %></h1></span>
 
 
-                                  <!-- not thhis  <div class="ml-2"> <small class="dis-price">$59</small> <span>40% OFF</span> </div> -->
+                                  
                                 </div>
                             </div>
                             <p class="about"><h5><%= result.description %></h5></p>
-                            <!-- <div class="sizes mt-5">
-                                <h6 class="text-uppercase">Size</h6> <label class="radio"> <input type="radio" name="size" value="S" checked> <span>S</span> </label> <label class="radio"> <input type="radio" name="size" value="M"> <span>M</span> </label> <label class="radio"> <input type="radio" name="size" value="L"> <span>L</span> </label> <label class="radio"> <input type="radio" name="size" value="XL"> <span>XL</span> </label> <label class="radio"> <input type="radio" name="size" value="XXL"> <span>XXL</span> </label>
-                            </div> -->
+                            
                             <form action="/user_home/addToCart?id=<%= result._id%>&productview=true" method="post">
                                 <div class="cart mt-4 align-items-center "><button type="submit"class="btn btn-warning text-uppercase mr-2 px-4">Add to cart</button> <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i> </div>
                             </form>

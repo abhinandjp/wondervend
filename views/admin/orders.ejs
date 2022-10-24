@@ -1,53 +1,63 @@
-<%- include('../layouts/header.ejs') %> 
-<%-include('../partials/admin-navbar.ejs') %> 
+<%- include('../layouts/header.ejs') %>
+  <%-include('.. /partials/admin-navbar.ejs') %>
 
-<section>
-    <div class="container">
-        <!-- <div class="row mt-4">
-            <a href="" class="btn btn-success">Add Product</a>
-        </div> -->
+    <section>
+      <div class="container">
 
-        
-          <table id="myTable" class="table mt-5">
+
+
+        <table id="myTable" class="table mt-5">
           <input type="text" class="mt-5 ml-auto" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-  <thead>
-    <tr>
-      <th scope="col">No</th>
-      <th scope="col">Order Id</th>
-      <th scope="col">Date</th>
-      <th scope="col">Cart Bill </th>
-      <th scope="col">Order Bill </th>
-      <th scope="col">Mode of Payment</th>
-      <!-- <th>Image</th> -->
-      <th>       Edit/Delete</th>
-      
-    </tr>
-  </thead>
-  <% for(let i =0; i< result.length; i++) {%> 
-  <tbody>
-    <tr>
-        <th scope="row"> <%=i+1  %> </th>
-        <td><%= result[i]._id%> </td>
-        <td><%= result[i].orderDate.toLocaleDateString()%> </td>
-        <td><%= result[i].cartBill%> </td>
-        <td><%= result[i].orderBill%> </td>
-        <td><%= result[i].paymentMethod%> </td>
-      
-        <td>
-            <a href="/admin-orders/viewOrder?id=<%= result[i]._id  %> ">
-            
-                <button class="btn btn-primary" >View Details</button>
-              </a>
-            </form>
-          </td>
-    </tr>
-     
-  </tbody>
-  <% } %> 
-</table>
-    </div>
-</section>
-<%- include ('../layouts/footer.ejs') %> 
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Order Id</th>
+              <th scope="col">Date</th>
+              <th scope="col">Cart Bill </th>
+              <th scope="col">Order Bill </th>
+              <th scope="col">Mode of Payment</th>
+              <!-- <th>Image</th> -->
+              <th> Edit/Delete</th>
+
+            </tr>
+          </thead>
+          <% for(let i=0; i< result.length; i++) {%>
+            <tbody>
+              <tr>
+                <th scope="row">
+                  <%=i+1 %>
+                </th>
+                <td>
+                  <%= result[i]._id%>
+                </td>
+                <td>
+                  <%= result[i].orderDate.toLocaleDateString()%>
+                </td>
+                <td>
+                  <%= result[i].cartBill%>
+                </td>
+                <td>
+                  <%= result[i].orderBill%>
+                </td>
+                <td>
+                  <%= result[i].paymentMethod%>
+                </td>
+
+                <td>
+                  <a href="/admin-orders/viewOrder?id=<%= result[i]._id  %> ">
+
+                    <button class="btn btn-primary">View Details</button>
+                  </a>
+                  </form>
+                </td>
+              </tr>
+
+            </tbody>
+            <% } %>
+        </table>
+      </div>
+    </section>
+    <%- include ('../layouts/footer.ejs') %>
 
 
 
@@ -59,4 +69,4 @@
 
 
 
-<%- include('../layouts/footer.ejs') %>
+      <%- include('../layouts/footer.ejs') %>

@@ -40,7 +40,7 @@ exports.isLoggedOut = (req, res, next) => {
         if (!session.userId) {
                 next()
         } else
-                res.redirect('user_home')
+                res.redirect('/')
 }
 exports.adminLoggedIn = (req, res, next) => {
         session = req.session
@@ -70,7 +70,7 @@ exports.loginRouter = (req, res) => {
 
         session = req.session
         if (session.userId) {
-                res.redirect('user_home')
+                res.redirect('/')
         } else {
                 res.render('user/login', { response })
 
@@ -170,7 +170,7 @@ exports.addToCart = (req, res) => {
                                                                         items: newCart.items,
                                                                         bill: cart.bill
                                                                 })
-                                                                        .then(() => res.redirect('/user_home'))
+                                                                        .then(() => res.redirect('/'))
                                                         }).catch((err) => console.log(err))
                                                 } else {
                                                         Product.findOne({ _id: req.query.id })
@@ -194,7 +194,7 @@ exports.addToCart = (req, res) => {
                                                                                 items: newCart.items,
                                                                                 bill: newCart.bill
                                                                         })
-                                                                                .then(() => res.redirect('/user_home'))
+                                                                                .then(() => res.redirect('/'))
                                                                 }).catch((err) => console.log(err))
                                                 }
                                         }).catch((err) => console.log(err))
@@ -215,7 +215,7 @@ exports.addToCart = (req, res) => {
                                                 })
                                                 cart.bill = cart.items[0].quantity * cart.items[0].price
                                                 cart.save()
-                                                        .then(() => res.redirect('/user_home'))
+                                                        .then(() => res.redirect('/'))
                                         }).catch((err) => console.log(err))
                         }
                 }).catch((err) => console.log(err))
@@ -495,9 +495,9 @@ exports.addToWishlist = (req, res) => {
                                                                                 Wishlist.deleteOne({ owner: user })
                                                                                         .then(() => {
                                                                                                 if (req.query.wishlist) {
-                                                                                                        res.redirect('/user_home')
+                                                                                                        res.redirect('/')
                                                                                                 } else {
-                                                                                                        res.redirect('/user_home')
+                                                                                                        res.redirect('/')
                                                                                                 }
 
                                                                                         }).catch((err) => console.log(err))
@@ -518,7 +518,7 @@ exports.addToWishlist = (req, res) => {
                                                                         result.items.push(newWishItem)
                                                                         Wishlist.updateOne({ owner: user }, { $set: { items: newWishlist.items } })
                                                                                 .then(() => {
-                                                                                        res.redirect('/user_home')
+                                                                                        res.redirect('/')
                                                                                 }).catch((err) => console.log(err))
                                                                 }).catch((err) => console.log(err))
 
@@ -540,7 +540,7 @@ exports.addToWishlist = (req, res) => {
                                                 })
                                                 wish.save()
                                                         .then(() => {
-                                                                res.redirect('/user_home')
+                                                                res.redirect('/')
                                                         }).catch((err) => console.log(err))
                                         }).catch((err) => console.log(err))
                         }
@@ -925,7 +925,7 @@ exports.otpVerification = (req, res) => {
 }
 exports.verifyOtpPage = (req, res) => {
         if (req.session.otplogin) {
-                res.redirect('/user_home')
+                res.redirect('/')
         } else
 
                 res.render('user/otp-verify')
@@ -939,7 +939,7 @@ exports.verifyOtp = (req, res) => {
                                         .then((user) => {
                                                 req.session.userId = user.email
                                                 req.session.otplogin = true
-                                                res.redirect('/user_home')
+                                                res.redirect('/')
                                         }).catch((err) => console.log(err))
                         } else
                                 res.redirect('/verifyOtp?otp=false')
@@ -974,7 +974,7 @@ exports.login = (req, res) => {
                                 session = req.session
                                 session.userId = loginData.email
 
-                                res.redirect('user_home')
+                                res.redirect('/')
                         } else {
                                 User.findOne({ email: loginData.email })
                                         .then((result) => {

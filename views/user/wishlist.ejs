@@ -33,16 +33,33 @@
                       <div class="col-md-3 col-lg-3 col-xl-3">
                        <a href="/product-view?id=<%= result.items[i].itemId %>">   <button type="submit" class="btn btn-success">View Product</button></a> 
                       </div>
-                      
-
-                      
-
-
-                      
-
                       <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                        <a href="/delete-wishlist?id=<%= result.items[i]._id %> " class="text-muted"><i class="fas fa-times"></i></a>
+                        <!-- <a href="/delete-wishlist?id=<%= //result.items[i]._id %> " class="text-muted"><i class="fas fa-times"></i></a> -->
+                        <i class="fas fa-times" data-bs-toggle="modal" data-bs-target="#Backdropwishlist"></i>
                       </div>
+
+                      <div class="modal fade" id="Backdropwishlist" data-bs-backdrop="static" data-bs-keyboard="false"
+                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Conformation</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                              aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            Are you sure you want Remove Product From wishlist ?
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                              data-bs-dismiss="modal">Close</button>
+                            <a href="/delete-wishlist?id=<%= result.items[i]._id %> "><button type="button"
+                                class="btn btn-danger">Remove</button></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                     </div>
                     <% } %> 
   

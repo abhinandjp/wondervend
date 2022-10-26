@@ -36,6 +36,10 @@
     color: red !important;
   }
 
+  .boxhead a {
+    text-decoration: none;
+}
+
   .badge :hover {
     color: red !important;
    
